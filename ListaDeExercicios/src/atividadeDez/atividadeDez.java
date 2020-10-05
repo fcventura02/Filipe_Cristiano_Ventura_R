@@ -1,6 +1,5 @@
 package atividadeDez;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +15,10 @@ import javax.swing.JButton;
 
 public class atividadeDez extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField tfAddress;
 	private JTextField tfName;
