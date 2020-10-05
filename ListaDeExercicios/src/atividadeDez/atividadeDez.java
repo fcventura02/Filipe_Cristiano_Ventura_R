@@ -43,14 +43,14 @@ public class atividadeDez extends JFrame {
 	 */
 	public atividadeDez() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 300, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JComboBox<String> cBCity = new JComboBox<String>();
-		cBCity.setBounds(284, 109, 118, 22);
+		cBCity.setBounds(148, 171, 118, 22);
 		contentPane.add(cBCity);
 		
 		cBCity.addItem("Belo Horizonte");
@@ -59,8 +59,48 @@ public class atividadeDez extends JFrame {
 		cBCity.addItem("Ouro Preto");
 		cBCity.addItem("Divinopolis");
 		
+		JComboBox<String> cBUF = new JComboBox<String>();
+		cBUF.setBounds(199, 109, 67, 22);
+		contentPane.add(cBUF);
+		
+		cBUF.addItem("MG");
+		cBUF.addItem("SP");
+		cBUF.addItem("BA");
+		
+		cBUF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String op = (String) cBUF.getSelectedItem ();
+				cBCity.removeAllItems();
+				switch (op) {
+				case "MG":
+					cBCity.addItem("Belo Horizonte");
+					cBCity.addItem("Santa Luzia");
+					cBCity.addItem("Contagem");
+					break;
+				case "SP":
+					cBCity.addItem("São Paulo");
+					cBCity.addItem("Guarulhos");
+					cBCity.addItem("Campinas");
+					break;
+				case "BA":
+					cBCity.addItem("Salvador");
+					cBCity.addItem("Feira de Santana");
+					cBCity.addItem("Vitória da Conquista");
+					break;
+
+				default:
+					cBCity.addItem("Belo Horizonte");
+					cBCity.addItem("Santa Luzia");
+					cBCity.addItem("Contagem");
+					cBCity.addItem("Ouro Preto");
+					cBCity.addItem("Divinopolis");
+					break;
+				} 
+			}
+			});
+		
 		tfAddress = new JTextField();
-		tfAddress.setBounds(10, 110, 248, 20);
+		tfAddress.setBounds(10, 110, 167, 20);
 		contentPane.add(tfAddress);
 		tfAddress.setColumns(10);
 		
@@ -96,7 +136,7 @@ public class atividadeDez extends JFrame {
 		contentPane.add(lblNewLabel_3);
 		
 		JButton btnConfirm = new JButton("Confirmar");
-		btnConfirm.setBounds(134, 227, 144, 23);
+		btnConfirm.setBounds(64, 227, 144, 23);
 		contentPane.add(btnConfirm);
 		
 		btnConfirm.addActionListener(new ActionListener() {
@@ -107,13 +147,11 @@ public class atividadeDez extends JFrame {
 				String name = (String) tfName.getText ();
 				String lastname = (String) tfLastname.getText ();
 				String district = (String) tfDistrict.getText ();
-				
-				System.out.println(tfAddress.getText().length());
-				
+							
 				if(address.length() != 0 && name.length() != 0 && lastname.length() != 0 && lastname.length() != 0)
-				JOptionPane.showMessageDialog(contentPane, "Entrega para o sr. " + name + " " + lastname +
+				JOptionPane.showConfirmDialog(contentPane, "Entrega para o sr. " + name + " " + lastname +
 						"\n" + "no endereço: " + address + "\n" + "Bairro: " + district + "\n" +
-						"City: " + city
+						"City: " +city,"Confirme seu endereço" , JOptionPane.YES_NO_OPTION
 						);
 			}
 		});		
